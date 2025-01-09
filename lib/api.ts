@@ -61,7 +61,7 @@ interface Category {
   title: string;
 }
 
-interface Project {
+export interface Project {
   sys: Sys;
   title: string;
   slug: string;
