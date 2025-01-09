@@ -9,7 +9,7 @@ export default async function Projects() {
 
   return (
     <main>
-      <section className="w-full p-5 flex flex-col gap-24 md:p-12">
+      <section className="w-full p-5 flex flex-col gap-24  lg:gap-0 md:p-12">
         {projects?.map((project) => (
           <article
             key={project.sys.id}
@@ -23,7 +23,7 @@ export default async function Projects() {
               height="263"
               width="350"
             />
-            <div className="flex gap-6 flex-col mt-20 md:p-16 md:ml-auto">
+            <div className="flex gap-6 flex-col mt-20 md:p-16:mt-10 md:ml-20 lg:ml-32">
               <h2 className="text-3xl font-serif font-semibold text-black md:text-4xl">
                 {project.title}
               </h2>
