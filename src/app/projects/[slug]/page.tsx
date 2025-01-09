@@ -59,7 +59,7 @@ export default async function ProjectPage({ params }: Props) {
             ))}
             <div className="space-y-4 md:space-y-6">
               <div className="space-y-2">
-                <div className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
+                <div className="max-w-[900px] text-black md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
                   {documentToReactComponents(
                     project.description.json as unknown as Document
                   )}

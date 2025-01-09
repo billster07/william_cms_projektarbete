@@ -131,10 +131,7 @@ export async function getAllProjects(
   }`;
 
   const projects = await fetchGraphQL(query, isDraftMode);
-  console.log(
-    "projects",
-    projects.data?.projectsCollection?.items?.[0].imagesCollection
-  );
+  console.log("projects", projects.data?.projectsCollection?.items);
   return extractProjectsEntries(projects);
 }
 
