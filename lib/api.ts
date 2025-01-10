@@ -120,7 +120,7 @@ interface WorkExperience {
   slug: string;
   company: string;
   startDate: string;
-  endDate: string;
+  endDate?: string;
   description: string;
 }
 
