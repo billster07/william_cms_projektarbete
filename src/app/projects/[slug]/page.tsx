@@ -32,34 +32,17 @@ export default async function ProjectPage({ params }: Props) {
     <main className="flex min-h-screen flex-col items-center justify-between bg-white">
       <section className="w-full">
         <div className="container space-y-12 px-4 md:px-6">
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">
-              {project.title}
-            </h1>
-            <p className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-              {project.summary}
-            </p>
-          </div>
           <div className="space-y-8 lg:space-y-10">
             <ImageCarousel project={project} />
-            {/* <Image
-              alt="Article Image"
-              className="aspect-video w-full overflow-hidden rounded-xl object-cover"
-              height={365}
-              src={project.thumbnail.url}
-              width={650}
-            />
-            {project.imagesCollection.items.map((image) => (
-              <Image
-                key={image.url}
-                alt="Article Image"
-                className="aspect-video w-full overflow-hidden rounded-xl object-cover"
-                height={365}
-                src={image.url}
-                width={650}
-              />
-            ))} */}
             <div className="space-y-4 md:space-y-6">
+              <div className="space-y-4">
+                <h1 className="text-3xl font-serif font-semibold tracking-tighter sm:text-5xl">
+                  {project.title}
+                </h1>
+                <p className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
+                  {project.summary}
+                </p>
+              </div>
               <div className="space-y-2">
                 <div className="max-w-[900px] text-black md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
                   {documentToReactComponents(

@@ -29,13 +29,13 @@ export default function ImageCarousel({ project }: Props) {
         {images.map((image, index) => (
           <CarouselItem key={index}>
             <Card className="border-none">
-              <CardContent className="flex aspect-square items-center justify-center p-0">
+              <CardContent className="flex items-center justify-center p-0">
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  width={600}
-                  height={400}
-                  className="object-cover rounded-lg"
+                  width={650}
+                  height={365}
+                  className="aspect-video w-full object-cover rounded-lg"
                 />
               </CardContent>
             </Card>

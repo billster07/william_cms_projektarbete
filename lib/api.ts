@@ -36,6 +36,34 @@ const PROJECTS_GRAPHQL_FIELDS = `
   date
 `;
 
+const ABOUT_PAGE_GRAPHQL_FIELDS = `
+  presentationText
+  educationsCollection {
+    items {
+    ... on Education {
+    titel
+      slug
+      institution
+      startDate
+      endDate
+      description
+    }
+    }
+  }
+  workExperiencesCollection {
+    items {
+    ... on WorkExperience {
+    title
+      slug
+      company
+      startDate
+      endDate
+      description
+    }
+    }
+  }
+`;
+
 interface Sys {
   id: string;
 }
@@ -78,10 +106,42 @@ export interface Project {
   date: string;
 }
 
+interface Education {
+  titel: string;
+  slug: string;
+  institution: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+}
+
+interface WorkExperience {
+  titel: string;
+  slug: string;
+  company: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+}
+
+export interface AboutPage {
+  sys: Sys;
+  presentationText: string;
+  educationsCollection: {
+    items: Education[];
+  };
+  workExperiencesCollection: {
+    items: WorkExperience[];
+  };
+}
+
 interface FetchResponse {
   data?: {
     projectsCollection?: {
       items: Project[];
+    };
+    aboutPageCollection?: {
+      items: AboutPage[];
     };
   };
 }
@@ -106,7 +166,6 @@ async function fetchGraphQL(
       next: { tags: ["projects"] },
     }
   );
-
   return response.json();
 }
 
@@ -152,4 +211,31 @@ export async function getProject(
   const project = await fetchGraphQL(query, isDraftMode);
   const projects = extractProjectsEntries(project);
   return projects ? projects[0] : undefined;
+}
+
+function extractAboutPageEntries(
+  fetchResponse: FetchResponse
+): AboutPage[] | undefined {
+  return fetchResponse?.data?.aboutPageCollection?.items.map((item) => ({
+    ...item,
+    educations: item.educationsCollection?.items || [],
+    workExperiences: item.workExperiencesCollection?.items || [],
+  }));
+}
+
+export async function getAboutPage(
+  isDraftMode: boolean = false
+): Promise<AboutPage | undefined> {
+  const query = `query {
+    aboutPageCollection(limit: 1, preview: ${isDraftMode ? "true" : "false"}) {
+      items {
+        ${ABOUT_PAGE_GRAPHQL_FIELDS}
+      }
+    }
+  }`;
+
+  const response = await fetchGraphQL(query, isDraftMode); // Använder befintlig funktion
+  console.log("api", response);
+  const aboutPage = extractAboutPageEntries(response);
+  return aboutPage ? aboutPage[0] : undefined;
 }
