@@ -116,7 +116,7 @@ interface Education {
 }
 
 interface WorkExperience {
-  titel: string;
+  title: string;
   slug: string;
   company: string;
   startDate: string;

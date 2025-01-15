@@ -17,12 +17,20 @@ export const Navigation = () => {
       <Link
         href="/projects"
         className={
-          pathname === "/projects"
+          pathname.startsWith("/projects")
             ? "font-bold mr-4 underline"
             : "font-bold mr-4"
         }
       >
         Projects
+      </Link>
+      <Link
+        href="/about"
+        className={
+          pathname === "/about" ? "font-bold mr-4 underline" : "font-bold mr-4"
+        }
+      >
+        About
       </Link>
       {/* <Link
         href="/products/1"

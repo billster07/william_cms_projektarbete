@@ -30,7 +30,7 @@ export default async function Projects() {
               <p className="text-black">{project.summary}</p>
               <Link
                 href={`/projects/${project.slug}`}
-                className="w-2/5 bg-white text-center text-black border-2 border-black py-4 rounded-full hover:bg-black hover:text-white transition"
+                className="w-28 bg-white text-center text-black border-2 border-black py-4 rounded-full hover:bg-black hover:text-white transition"
               >
                 Till projektet
               </Link>

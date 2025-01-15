@@ -24,7 +24,7 @@ export default function ImageCarousel({ project }: Props) {
   ];
 
   return (
-    <Carousel>
+    <Carousel opts={{ loop: true }}>
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>
