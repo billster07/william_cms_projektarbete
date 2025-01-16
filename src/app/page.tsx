@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getAllProjects } from "../../lib/api";
 import Link from "next/link";
 import { draftMode } from "next/headers";
+import AnimatedText from "./components/AnimatedText";
 
 export default async function Home() {
   const { isEnabled } = await draftMode();
@@ -12,6 +13,12 @@ export default async function Home() {
         <div className="mx-auto container space-y-12 px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
+              <AnimatedText
+                text="This is my portfolio"
+                speed={80}
+                className="text-5xl"
+              />
+              <AnimatedText text="suck a bag of dicks" />
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                 Welcome to our Knowledge Base
               </h1>

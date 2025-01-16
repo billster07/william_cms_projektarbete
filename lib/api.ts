@@ -28,11 +28,7 @@ const PROJECTS_GRAPHQL_FIELDS = `
       }
     }
   }
-  category {
-  ... on Categories {
-    title
-  }
-}
+  category
   date
 `;
 
@@ -85,10 +81,6 @@ interface Description {
   links: DescriptionLinks;
 }
 
-interface Category {
-  title: string;
-}
-
 export interface Project {
   sys: Sys;
   title: string;
@@ -102,7 +94,7 @@ export interface Project {
   };
   projectUrl: string;
   description: Description;
-  category: Category;
+  category: string;
   date: string;
 }
 
@@ -190,7 +182,6 @@ export async function getAllProjects(
   }`;
 
   const projects = await fetchGraphQL(query, isDraftMode);
-  console.log("projects", projects.data?.projectsCollection?.items);
   return extractProjectsEntries(projects);
 }
 
@@ -234,8 +225,7 @@ export async function getAboutPage(
     }
   }`;
 
-  const response = await fetchGraphQL(query, isDraftMode); // Använder befintlig funktion
-  console.log("api", response);
+  const response = await fetchGraphQL(query, isDraftMode);
   const aboutPage = extractAboutPageEntries(response);
   return aboutPage ? aboutPage[0] : undefined;
 }
