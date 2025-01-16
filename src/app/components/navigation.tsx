@@ -27,10 +27,22 @@ export const Navigation = () => {
       <Link
         href="/about"
         className={
-          pathname === "/about" ? "font-bold mr-4 underline" : "font-bold mr-4"
+          pathname === "/about"
+            ? "font-bold font-serif mr-4 underline"
+            : "font-bold font-serif mr-4"
         }
       >
         About
+      </Link>
+      <Link
+        href="/contact"
+        className={
+          pathname === "/contact"
+            ? "font-bold mr-4 underline"
+            : "font-bold mr-4"
+        }
+      >
+        Contact
       </Link>
       {/* <Link
         href="/products/1"
