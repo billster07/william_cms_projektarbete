@@ -9,7 +9,7 @@ interface Props {
   className?: string;
 }
 
-export default function AnimatedText({ text, speed = 50, className }: Props) {
+export default function AnimatedText({ text, speed = 80, className }: Props) {
   const { displayedText, isComplete } = useAnimatedText(text, speed);
 
   return (

@@ -60,6 +60,20 @@ const ABOUT_PAGE_GRAPHQL_FIELDS = `
   }
 `;
 
+const CONTACT_GRAPHQL_FIELDS = `
+sys {
+    id
+  }
+  title
+  slug
+  description
+  image {
+    url
+  }
+  eMail
+  linkedin
+  github
+`;
 interface Sys {
   id: string;
 }
@@ -127,6 +141,19 @@ export interface AboutPage {
   };
 }
 
+export interface Contact {
+  sys: Sys;
+  title: string;
+  slug: string;
+  description: string;
+  image: {
+    url: string;
+  };
+  eMail: string;
+  linkedin: string;
+  github: string;
+}
+
 interface FetchResponse {
   data?: {
     projectsCollection?: {
@@ -134,6 +161,9 @@ interface FetchResponse {
     };
     aboutPageCollection?: {
       items: AboutPage[];
+    };
+    contactCollection?: {
+      items: Contact[];
     };
   };
 }
@@ -228,4 +258,28 @@ export async function getAboutPage(
   const response = await fetchGraphQL(query, isDraftMode);
   const aboutPage = extractAboutPageEntries(response);
   return aboutPage ? aboutPage[0] : undefined;
+}
+
+function extractContactEntries(
+  fetchResponse: FetchResponse
+): Contact[] | undefined {
+  return fetchResponse?.data?.contactCollection?.items;
+}
+
+export async function getContact(
+  limit = 3,
+  isDraftMode: boolean = false
+): Promise<Contact | undefined> {
+  const query = `query {
+    contactCollection(limit: ${limit}, preview: ${
+    isDraftMode ? "true" : "false"
+  }) {
+    items {
+      ${CONTACT_GRAPHQL_FIELDS}
+    }}
+    }`;
+
+  const response = await fetchGraphQL(query, isDraftMode);
+  const contact = extractContactEntries(response);
+  return contact ? contact[0] : undefined;
 }

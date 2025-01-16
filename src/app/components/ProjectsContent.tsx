@@ -21,11 +21,11 @@ export default function ProjectsContent({ projects, categories }: Props) {
   };
 
   return (
-    <main>
-      <section className="w-full p-5 flex flex-col gap-24 lg:gap-0 md:p-12">
+    <div>
+      <section className="w-full flex flex-col gap-16">
         <div className="flex gap-2">
           <button
-            className={`border px-4 py-2 ${
+            className={`border-2 rounded-full border-black text-sm px-4 py-2 ${
               !categoryValue ? "bg-black text-white" : "bg-white"
             }`}
             onClick={() => handleButtonClick(undefined)}
@@ -35,7 +35,7 @@ export default function ProjectsContent({ projects, categories }: Props) {
           {categories?.map((category) => (
             <button
               key={category}
-              className={`border px-4 py-2 ${
+              className={`border-2 rounded-full border-black text-sm px-4 py-2 ${
                 categoryValue === category ? "bg-black text-white" : "bg-white"
               }`}
               onClick={() => handleButtonClick(category)}
@@ -45,14 +45,11 @@ export default function ProjectsContent({ projects, categories }: Props) {
           ))}
         </div>
         {filteredProjects?.map((project) => (
-          <article
-            key={project.sys.id}
-            className="flex flex-col md:flex-row lg:p-10"
-          >
+          <article key={project.sys.id} className="flex flex-col md:flex-row">
             <Image
               alt={project.title}
               src={project.thumbnail.url}
-              className="aspect-[4/3] object-cover w-full md:w-1/2"
+              className="object-cover w-full md:w-1/2"
               height="263"
               width="350"
             />
@@ -63,14 +60,14 @@ export default function ProjectsContent({ projects, categories }: Props) {
               <p className="text-black">{project.summary}</p>
               <Link
                 href={`/projects/${project.slug}`}
-                className="w-30 bg-white text-center text-black border-2 border-black py-4 rounded-full hover:bg-black hover:text-white transition"
+                className="w-32 bg-white text-center text-black border-2 border-black py-4 rounded-full hover:bg-black hover:text-white transition"
               >
-                Till projektet
+                View Project
               </Link>
             </div>
           </article>
         ))}
       </section>
-    </main>
+    </div>
   );
 }

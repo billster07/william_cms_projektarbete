@@ -36,9 +36,17 @@ export default async function ProjectPage({ params }: Props) {
             <ImageCarousel project={project} />
             <div className="space-y-4 md:space-y-6">
               <div className="space-y-4">
-                <h1 className="text-3xl font-serif font-semibold tracking-tighter sm:text-5xl">
-                  {project.title}
-                </h1>
+                <div className="flex justify-between">
+                  <h1 className="text-3xl font-serif font-semibold tracking-tighter sm:text-5xl">
+                    {project.title}
+                  </h1>
+                  <a
+                    href={project.projectUrl}
+                    className="w-32 bg-white text-center text-black border-2 border-black py-4 rounded-full hover:bg-black hover:text-white transition"
+                  >
+                    Visit Project
+                  </a>
+                </div>
                 <p className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
                   {project.summary}
                 </p>

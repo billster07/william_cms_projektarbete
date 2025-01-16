@@ -17,20 +17,21 @@ body {
 
 main {
   flex-grow: 1;
+  padding: 14px;
+  margin-top: 10px;
 }
 
-/* .blink {
-  display: inline-block;
-  width: 1px;
-  background-color: black;
-  animation: blink 1s steps(2, start) infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
+@media (min-width: 600px) {
+  main {
+    padding: 40px;
   }
-} */
+}
+
+@media (min-width: 1000px) {
+  main {
+    padding: 10px 100px 40px;
+  }
+}
 
 @layer base {
   :root {

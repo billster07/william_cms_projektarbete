@@ -9,7 +9,9 @@ export const Navigation = () => {
       <Link
         href="/"
         className={
-          pathname === "/" ? "font-bold mr-4 underline" : "font-bold mr-4"
+          pathname === "/"
+            ? "text-lg font-bold font-serif mr-4 underline"
+            : "text-lg font-bold font-serif mr-4"
         }
       >
         Home
@@ -18,8 +20,8 @@ export const Navigation = () => {
         href="/projects"
         className={
           pathname.startsWith("/projects")
-            ? "font-bold mr-4 underline"
-            : "font-bold mr-4"
+            ? "text-lg font-bold font-serif mr-4 underline"
+            : "text-lg font-bold font-serif mr-4"
         }
       >
         Projects
@@ -28,8 +30,8 @@ export const Navigation = () => {
         href="/about"
         className={
           pathname === "/about"
-            ? "font-bold font-serif mr-4 underline"
-            : "font-bold font-serif mr-4"
+            ? "text-lg font-bold font-serif mr-4 underline"
+            : "text-lg font-bold font-serif mr-4"
         }
       >
         About
@@ -38,22 +40,12 @@ export const Navigation = () => {
         href="/contact"
         className={
           pathname === "/contact"
-            ? "font-bold mr-4 underline"
-            : "font-bold mr-4"
+            ? "text-lg font-bold font-serif mr-4 underline"
+            : "text-lg font-bold font-serif mr-4"
         }
       >
         Contact
       </Link>
-      {/* <Link
-        href="/products/1"
-        className={
-          pathname.startsWith("/products/1")
-            ? "font-bold mr-4"
-            : "mr-4 text-blue-500"
-        }
-      >
-        Product 1
-      </Link> */}
     </nav>
   );
 };
