@@ -1,6 +1,5 @@
 import { getProject, getAllProjects } from "../../../../lib/api";
 import { notFound } from "next/navigation";
-// import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Document } from "@contentful/rich-text-types";
 import { draftMode } from "next/headers";
@@ -13,9 +12,11 @@ type Props = {
 export async function generateStaticParams() {
   const allProjects = await getAllProjects();
 
-  return allProjects?.map((article) => ({
-    slug: article.slug,
-  }));
+  return (
+    allProjects?.map((project) => ({
+      slug: project.slug,
+    })) ?? []
+  );
 }
 
 export default async function ProjectPage({ params }: Props) {
